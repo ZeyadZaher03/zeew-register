@@ -7,11 +7,15 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+		/>
 		<link rel="stylesheet" href="./assets/css/signup.css" />
 		<title>Sign up</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container-register">
 			<div class="signup-container">
 				<h2 class="logo-name">Zeew</h2>
 				<div class="signup-content">
@@ -135,8 +139,21 @@
 							</label>
 						</div>
 
+						<div class="optional-address input-container">
+							<input
+								class="input"
+								type="text"
+								name="address-two"
+								placeholder="Address (optional)"
+								required
+							/>
+							<label class="input-label">
+								Address (optional)
+							</label>
+						</div>
+
 						<div class="input-container">
-							<button class="btn-inline">
+							<button class="btn-inline add-address">
 								+ add additional address
 							</button>
 						</div>

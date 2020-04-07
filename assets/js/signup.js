@@ -3,7 +3,14 @@ const fileInput = document.querySelector(".file");
 const dummyFileInput = document.querySelector(".file-dummy");
 const checkBox = document.querySelector(".check-box");
 const formSignUp = document.querySelector(".form-signup");
+const optinalAddress = document.querySelector(".optional-address");
+const optinalAddressBtn = document.querySelector(".add-address");
 
+optinalAddressBtn.addEventListener("click", (e) => {
+	e.preventDefault;
+	optinalAddressBtn.style.display = "none";
+	optinalAddress.style.display = "inline-block";
+});
 dummyFileInput.addEventListener("click", (e) => {
 	e.preventDefault();
 	fileInput.click();
