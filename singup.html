@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link rel="stylesheet" href="./assets/css/signup.css" />
+		<title>Sign up</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="signup-container">
+				<h2 class="logo-name">Zeew</h2>
+				<div class="signup-content">
+					<h2 class="heading-big">SIGN UP</h2>
+
+					<form class="form-signup">
+						<div class="input-container profile-pic_container">
+							<div class="profile-pic-box"></div>
+							<input class="file" type="file" />
+							<button class="file-dummy btn-inline">
+								Add profile pic
+							</button>
+						</div>
+						<div
+							class="input-container input-container-half margin-r-input"
+						>
+							<input
+								class="input"
+								type="text"
+								name="firstName"
+								placeholder="Frist Name"
+								required
+							/>
+							<label class="input-label">
+								First Name
+							</label>
+						</div>
+						<div class="input-container input-container-half">
+							<input
+								class="input"
+								type="text"
+								name="lastName"
+								placeholder="Last Name"
+								required
+							/>
+							<label class="input-label">
+								Last Name
+							</label>
+						</div>
+
+						<div class="input-container">
+							<input
+								class="input"
+								type="text"
+								name="email"
+								placeholder="Email Address"
+								required
+							/>
+							<label class="input-label">
+								Email Address
+							</label>
+						</div>
+
+						<div class="input-container">
+							<input
+								class="input"
+								type="text"
+								name="phone"
+								placeholder="Phone number"
+								required
+							/>
+							<label class="input-label">
+								Phone number
+							</label>
+						</div>
+
+						<div
+							class="input-container input-container-half margin-r-input"
+						>
+							<select class="input" name="country" required>
+								<option value="Egypt">Egypt</option>
+								<option value="US">US</option>
+								<option value="SaudiArabia"
+									>Saudi Arabia
+								</option>
+							</select>
+							<label class="input-label">
+								Country
+							</label>
+						</div>
+						<div class="input-container input-container-half">
+							<select
+								class="input"
+								name="city"
+								required
+								data-country="countryName"
+							>
+								<option value="alexandria">alexandria</option>
+								<option value="cairo">cairo</option>
+								<option value="dakhlya">dakhlya</option>
+								<option value="giza"> giza</option>
+							</select>
+							<label class="input-label">
+								City
+							</label>
+						</div>
+
+						<div class="input-container">
+							<input
+								class="input"
+								type="text"
+								name="address"
+								placeholder="Address"
+								required
+							/>
+							<label class="input-label">
+								Address
+							</label>
+						</div>
+
+						<div class="input-container">
+							<button class="btn-inline">
+								+ add additional address
+							</button>
+						</div>
+
+						<div>
+							<label class="check-box">
+								<input
+									name="newsletter"
+									class="news-sub"
+									type="checkbox"
+								/>
+								<div class="unchecked"></div>
+								<div class="checked">
+									<i class="fa fa-check"></i>
+								</div>
+								<span>Subscribe to our newsletter</span>
+							</label>
+						</div>
+
+						<input
+							value="Sign Up"
+							type="submit"
+							class="sign-up btn-primary"
+						/>
+					</form>
+				</div>
+			</div>
+			<div class="img-container"></div>
+		</div>
+		<div class="popup">
+			<div class="popup-container"></div>
+		</div>
+		<script>
+			const inputs = Array.from(
+				document.querySelectorAll("input[type='text']")
+			);
+			const fileInput = document.querySelector(".file");
+			const dummyFileInput = document.querySelector(".file-dummy");
+			dummyFileInput.addEventListener("click", (e) => {
+				e.preventDefault();
+				fileInput.click();
+			});
+
+			fileInput.addEventListener("change", (e) => {
+				const formData = new FormData();
+				const profileImage = fileInput.files[0];
+				const profileImageSize = profileImage.size;
+				const profileImageName = profileImage.name;
+				const profileImageExtenstion = profileImageName
+					.split(".")
+					.pop()
+					.toLowerCase();
+				const imagesFormat = ["jpg", "jpeg", "png"];
+
+				// document.querySelector(
+				// 	".profile-pic-box"
+				// ).style.backgroundImage = `url("/assets/images/${profileImageName}")`;
+			});
+			Array.from(document.querySelectorAll("select")).map((select) =>
+				select.parentNode.querySelector("label").classList.add("empty")
+			);
+			document.addEventListener("change", () => {
+				inputs.map((input) => {
+					if (input.value !== "") {
+						input.parentNode
+							.querySelector("label")
+							.classList.add("empty");
+					} else {
+						input.parentNode
+							.querySelector("label")
+							.classList.remove("empty");
+					}
+				});
+			});
+
+			const checkBox = document.querySelector(".check-box");
+			checkBox
+				.querySelector(".news-sub")
+				.addEventListener("click", () => {
+					if (checkBox.querySelector(".news-sub").checked) {
+						checkBox.querySelector(".unchecked").style.display =
+							"none";
+						checkBox.querySelector(".checked").style.display =
+							"flex";
+					} else {
+						checkBox.querySelector(".unchecked").style.display =
+							"block";
+						checkBox.querySelector(".checked").style.display =
+							"none";
+					}
+				});
+			const formSignUp = document.querySelector(".form-signup");
+			formSignUp.addEventListener("submit", (e) => {
+				e.preventDefault();
+				Array.from(formSignUp.querySelectorAll("input")).map(
+					(input) => {
+						console.log(input.value);
+					}
+				);
+			});
+
+			document
+				.querySelector(".sign-up")
+				.addEventListener("click", (e) => {
+					e.preventDefault();
+					e.preventDefault();
+					Array.from(
+						formSignUp.querySelectorAll("input[type='text']")
+					).map((input) => {
+						if (input.required && input.value === "") {
+							input.style.border = "1px solid red";
+						}
+					});
+				});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,247 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: lato;
+	font-size: 1.6rem;
+	height: 100%;
+}
+button {
+	cursor: pointer;
+}
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 3rem;
+	grid-column-gap: 3rem;
+	min-height: 100vh;
+}
+
+.img-container {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
+		url("/assets/images/header.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.signup-container {
+	border: 1px solid #eeeeee;
+	display: flex;
+	border-radius: 3px;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem 0;
+}
+.logo-name {
+	color: #4db265;
+}
+.signup-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70%;
+}
+
+.heading-big {
+	text-transform: uppercase;
+	font-size: 4rem;
+	color: #358247;
+	font-weight: normal;
+	margin: 1.5rem 0;
+}
+
+.profile-pic_container {
+	display: flex !important;
+	flex-direction: column;
+	align-items: center;
+}
+
+.profile-pic-box {
+	width: 70px;
+	height: 70px;
+	margin-bottom: 1rem;
+	border-radius: 100%;
+	border: 1px solid #ccc;
+	background-image: url("/assets/images/user.svg");
+	background-position: center;
+	background-size: 70%;
+	background-repeat: no-repeat;
+}
+
+.input-container {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.input-container-half {
+	width: 48%;
+}
+.margin-r-input {
+	margin-right: 3%;
+}
+.input-container:not(:last-child) {
+	margin-bottom: 2.5rem;
+}
+
+.input {
+	padding: 0.9rem 1.7rem;
+	border-radius: 3px;
+	border: 1px solid #c9c9c9;
+	width: 100%;
+	color: #1a1a1a;
+	font-size: 1.5rem;
+}
+
+.input:focus {
+	outline: none;
+	border: 1px solid #5eb873;
+	box-shadow: 0px 0px 1px 1px #5eb87344;
+}
+
+.input-label {
+	position: absolute;
+	font-size: 1.3rem;
+	top: 10px;
+	text-align: center;
+	color: #797979;
+	left: 10px;
+	opacity: 0;
+	z-index: -1;
+	background-color: #fff;
+	height: 10px;
+	padding: 0 7px;
+	transition: all 0.2s ease-in-out;
+}
+.file {
+	display: none;
+}
+.input:focus ~ .input-label {
+	z-index: 1;
+	opacity: 1;
+	color: #5eb873;
+	display: inline;
+	top: -9px;
+}
+
+.empty {
+	z-index: 1;
+	opacity: 1;
+	color: #5eb873;
+	display: inline;
+	top: -9px;
+}
+
+.btn-inline {
+	background-color: transparent;
+	border: none;
+	color: #3d794b;
+	font-size: 1.5rem;
+}
+
+.btn-primary {
+	border: none;
+	background-color: #49a165;
+	color: #fff;
+	font-weight: bold;
+	margin-top: 15px;
+	font-size: 1.5rem;
+	text-transform: capitalize;
+	border-radius: 3px;
+	padding: 7px 15px;
+}
+
+.news-sub {
+	display: none;
+}
+
+.unchecked {
+	width: 15px;
+	height: 15px;
+	background-color: #5eb873;
+	border-radius: 3px;
+	border: 1.5px solid #3d8c56;
+}
+
+.checked {
+	width: 15px;
+	height: 15px;
+	background-color: #5eb873;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	color: #165a2c;
+	border-radius: 3px;
+	border: 1.5px solid #3d8c56;
+}
+.check-box {
+	display: flex;
+	align-items: center;
+	width: 220px;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+.popup {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 100%;
+	display: none;
+	height: 100%;
+	z-index: 99999;
+	top: 0;
+	left: 0;
+}
+
+@media only screen and (max-width: 970px) {
+	.margin-r-input {
+		margin-right: 2.7%;
+	}
+}
+@media only screen and (max-width: 800px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
+	.img-container {
+		display: none;
+	}
+	.signup-content {
+		height: 100%;
+		justify-content: center;
+	}
+	.form-signup {
+		height: 80%;
+		margin-top: 20px;
+	}
+	.input-container:not(:last-child) {
+		margin-bottom: 2.3rem;
+	}
+	.btn-primary {
+		width: 100%;
+		padding: 10px 0;
+	}
+	.profile-pic_container {
+		margin-bottom: 50px !important;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.margin-r-input {
+		margin: 0;
+	}
+	.profile-pic_container {
+		margin-bottom: 50px !important;
+	}
+	.input-container-half {
+		width: 100%;
+	}
+	.input-container:not(:last-child) {
+		margin-bottom: 2rem;
+	}
+}
