@@ -68,6 +68,19 @@
 						<div class="input-container">
 							<input
 								class="input"
+								type="password"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+							<label class="input-label">
+								Password
+							</label>
+						</div>
+
+						<div class="input-container">
+							<input
+								class="input"
 								type="text"
 								name="phone"
 								placeholder="Phone number"
@@ -156,88 +169,6 @@
 		<div class="popup">
 			<div class="popup-container"></div>
 		</div>
-		<script>
-			const inputs = Array.from(
-				document.querySelectorAll("input[type='text']")
-			);
-			const fileInput = document.querySelector(".file");
-			const dummyFileInput = document.querySelector(".file-dummy");
-			dummyFileInput.addEventListener("click", (e) => {
-				e.preventDefault();
-				fileInput.click();
-			});
-
-			fileInput.addEventListener("change", (e) => {
-				const formData = new FormData();
-				const profileImage = fileInput.files[0];
-				const profileImageSize = profileImage.size;
-				const profileImageName = profileImage.name;
-				const profileImageExtenstion = profileImageName
-					.split(".")
-					.pop()
-					.toLowerCase();
-				const imagesFormat = ["jpg", "jpeg", "png"];
-
-				// document.querySelector(
-				// 	".profile-pic-box"
-				// ).style.backgroundImage = `url("/assets/images/${profileImageName}")`;
-			});
-			Array.from(document.querySelectorAll("select")).map((select) =>
-				select.parentNode.querySelector("label").classList.add("empty")
-			);
-			document.addEventListener("change", () => {
-				inputs.map((input) => {
-					if (input.value !== "") {
-						input.parentNode
-							.querySelector("label")
-							.classList.add("empty");
-					} else {
-						input.parentNode
-							.querySelector("label")
-							.classList.remove("empty");
-					}
-				});
-			});
-
-			const checkBox = document.querySelector(".check-box");
-			checkBox
-				.querySelector(".news-sub")
-				.addEventListener("click", () => {
-					if (checkBox.querySelector(".news-sub").checked) {
-						checkBox.querySelector(".unchecked").style.display =
-							"none";
-						checkBox.querySelector(".checked").style.display =
-							"flex";
-					} else {
-						checkBox.querySelector(".unchecked").style.display =
-							"block";
-						checkBox.querySelector(".checked").style.display =
-							"none";
-					}
-				});
-			const formSignUp = document.querySelector(".form-signup");
-			formSignUp.addEventListener("submit", (e) => {
-				e.preventDefault();
-				Array.from(formSignUp.querySelectorAll("input")).map(
-					(input) => {
-						console.log(input.value);
-					}
-				);
-			});
-
-			document
-				.querySelector(".sign-up")
-				.addEventListener("click", (e) => {
-					e.preventDefault();
-					e.preventDefault();
-					Array.from(
-						formSignUp.querySelectorAll("input[type='text']")
-					).map((input) => {
-						if (input.required && input.value === "") {
-							input.style.border = "1px solid red";
-						}
-					});
-				});
-		</script>
+		<script src="assets/js/signup.js"></script>
 	</body>
 </html>

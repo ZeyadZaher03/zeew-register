@@ -105,6 +105,11 @@ button {
 	box-shadow: 0px 0px 1px 1px #5eb87344;
 }
 
+.input-error {
+	border: 1px solid #fd7d7d;
+	box-shadow: 0px 0px 1px 1px #ff8f8f;
+}
+
 .input-label {
 	position: absolute;
 	font-size: 1.3rem;
