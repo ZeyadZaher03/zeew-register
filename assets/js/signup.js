@@ -7,9 +7,66 @@ const optinalAddress = document.querySelector(".optional-address");
 const optinalAddressBtn = document.querySelector(".add-address");
 
 optinalAddressBtn.addEventListener("click", (e) => {
+	addressOptionalContaier = document.querySelector(
+		".optional-address-container"
+	);
+	const eleLength = Array.from(
+		addressOptionalContaier.querySelectorAll(".optional-address")
+	).length;
 	e.preventDefault();
-	optinalAddressBtn.style.display = "none";
-	optinalAddress.style.display = "inline-block";
+	if (eleLength < 5) {
+		inputContainer = document.createElement("div");
+		inputContainer.classList.add("input-container");
+		inputContainer.classList.add("optional-address");
+
+		optionalAddressInput = document.createElement("input");
+		optionalAddressInput.setAttribute("type", "text");
+		optionalAddressInput.classList.add("input");
+		const numberName = () => {
+			if (eleLength == 0) {
+				return "one";
+			} else if (eleLength == 1) {
+				return "two";
+			} else if (eleLength == 2) {
+				return "three";
+			} else if (eleLength == 3) {
+				return "four";
+			} else if (eleLength == 4) {
+				return "five";
+			} else {
+				return "s";
+			}
+		};
+		console.log(numberName());
+		optionalAddressInput.setAttribute("name", `address-${numberName()}`);
+		optionalAddressInput.setAttribute(
+			"placeholder",
+			`Address ( Optional )`
+		);
+		optionalAddressInput.setAttribute("required", "");
+
+		optionalAddressLabel = document.createElement("label");
+		optionalAddressLabel.classList.add("input-label");
+		optionalAddressLabel.innerHTML = "Addres (optional)";
+
+		inputContainer.appendChild(optionalAddressInput);
+		inputContainer.appendChild(optionalAddressLabel);
+
+		addressOptionalContaier.appendChild(inputContainer);
+	}
+	if (eleLength >= 5) {
+		optinalAddressBtn.style.display = "none";
+	}
+	// <div class="optional-address input-container">
+	// 	<input
+	// 		class="input"
+	// 		type="text"
+	// 		name="address-two"
+	// 		placeholder="Address (optional)"
+	// 		required
+	// 	/>
+	// 	<label class="input-label">Address (optional)</label>
+	// </div>;
 });
 dummyFileInput.addEventListener("click", (e) => {
 	e.preventDefault();

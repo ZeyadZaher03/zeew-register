@@ -108,7 +108,7 @@ button {
 .margin-r-input {
 	margin-right: 3%;
 }
-.input-container:not(:last-child) {
+.input-container {
 	margin-bottom: 2.5rem;
 }
 
@@ -183,8 +183,8 @@ button {
 	border-radius: 3px;
 	padding: 7px 15px;
 }
+
 .optional-address {
-	display: none;
 	animation: fadeInDown 0.3s ease-in;
 }
 .news-sub {
