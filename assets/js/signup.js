@@ -55,18 +55,8 @@ optinalAddressBtn.addEventListener("click", (e) => {
 		addressOptionalContaier.appendChild(inputContainer);
 	}
 	if (eleLength >= 5) {
-		optinalAddressBtn.style.display = "none";
+		optinalAddressBtn.parentNode.style.display = "none";
 	}
-	// <div class="optional-address input-container">
-	// 	<input
-	// 		class="input"
-	// 		type="text"
-	// 		name="address-two"
-	// 		placeholder="Address (optional)"
-	// 		required
-	// 	/>
-	// 	<label class="input-label">Address (optional)</label>
-	// </div>;
 });
 dummyFileInput.addEventListener("click", (e) => {
 	e.preventDefault();
