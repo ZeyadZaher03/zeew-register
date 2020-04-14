@@ -7,7 +7,7 @@ const optinalAddress = document.querySelector(".optional-address");
 const optinalAddressBtn = document.querySelector(".add-address");
 
 optinalAddressBtn.addEventListener("click", (e) => {
-	e.preventDefault;
+	e.preventDefault();
 	optinalAddressBtn.style.display = "none";
 	optinalAddress.style.display = "inline-block";
 });
@@ -48,6 +48,20 @@ formSignUp.addEventListener("submit", (e) => {
 	});
 });
 
+fileInput.addEventListener("change", (e) => {
+	const file = fileInput.files[0];
+	const reader = new FileReader();
+
+	reader.onloadend = () => {
+		const imgContainer = document.querySelector(".profile-pic-box");
+		const imgEle = document.createElement("img");
+		imgContainer.innerHTML = "";
+		imgEle.src = reader.result;
+		imgContainer.appendChild(imgEle);
+	};
+	reader.readAsDataURL(file);
+});
+
 document.querySelector(".sign-up").addEventListener("click", (e) => {
 	e.preventDefault();
 	const formData = [];
@@ -76,10 +90,20 @@ document.querySelector(".sign-up").addEventListener("click", (e) => {
 					.pop()
 					.toLowerCase();
 				const imagesFormat = ["jpg", "jpeg", "png"];
+				const reader = new FileReader();
+				reader.onloadend = () => {
+					const imgContainer = document.querySelector(
+						".profile-pic-box"
+					);
+					const imgEle = document.createElement("img");
+					imgContainer.innerHTML = "";
+					imgEle.src = reader.result;
+					imgContainer.appendChild(imgEle);
+				};
+				reader.readAsDataURL(file);
 			}
 
 			if (fileInput.value) {
-				console.log("TFGHIJLK");
 				formData[profileImage] = profileImage;
 				formData[profileImageSize] = profileImageSize;
 				formData[profileImageName] = profileImageName;

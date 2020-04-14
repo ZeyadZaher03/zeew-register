@@ -16,7 +16,7 @@ body {
 button {
 	cursor: pointer;
 }
-.container {
+.container-register {
 	padding: 30px;
 }
 .container-register {
@@ -29,7 +29,7 @@ button {
 
 .img-container {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
-		url("/assets/images/header.jpg");
+		url("../images/header.jpg");
 	background-position: center;
 	background-size: cover;
 }
@@ -81,10 +81,19 @@ button {
 	margin-bottom: 1rem;
 	border-radius: 100%;
 	border: 1px solid #ccc;
-	background-image: url("/assets/images/user.svg");
-	background-position: center;
-	background-size: 70%;
-	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	align-items: center;
+}
+
+.profile-pic-box i {
+	font-size: 42px;
+	color: #151515;
+}
+
+.profile-pic-box img {
+	width: 100%;
 }
 
 .input-container {
@@ -226,7 +235,7 @@ button {
 	}
 }
 @media only screen and (max-width: 800px) {
-	.container {
+	.container-register {
 		grid-template-columns: 1fr;
 	}
 	.img-container {
