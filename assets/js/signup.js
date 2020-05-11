@@ -1,11 +1,18 @@
-const inputs = Array.from(document.querySelectorAll("input[type='text']"));
+// CONTANTS ---
 const fileInput = document.querySelector(".file");
 const dummyFileInput = document.querySelector(".file-dummy");
 const checkBox = document.querySelector(".check-box");
 const formSignUp = document.querySelector(".form-signup");
 const optinalAddress = document.querySelector(".optional-address");
 const optinalAddressBtn = document.querySelector(".add-address");
+const inputs = formSignUp.querySelectorAll(
+	"input[type='text'] ,input[type='password']"
+);
+const isSubscribeNewsLetter = formSignUp.querySelector(".news-sub").checked;
 
+// FUNCTIONS ---
+
+// ADD OPTIONAL ADDRESS
 optinalAddressBtn.addEventListener("click", (e) => {
 	addressOptionalContaier = document.querySelector(
 		".optional-address-container"
@@ -23,25 +30,17 @@ optinalAddressBtn.addEventListener("click", (e) => {
 		optionalAddressInput.setAttribute("type", "text");
 		optionalAddressInput.classList.add("input");
 		const numberName = () => {
-			if (eleLength == 0) {
-				return "one";
-			} else if (eleLength == 1) {
-				return "two";
-			} else if (eleLength == 2) {
-				return "three";
-			} else if (eleLength == 3) {
-				return "four";
-			} else if (eleLength == 4) {
-				return "five";
-			} else {
-				return "s";
-			}
+			if (eleLength == 0) return "one";
+			else if (eleLength == 1) return "two";
+			else if (eleLength == 2) return "three";
+			else if (eleLength == 3) return "four";
+			else if (eleLength == 4) return "five";
+			else return "s";
 		};
-		console.log(numberName());
 		optionalAddressInput.setAttribute("name", `address-${numberName()}`);
 		optionalAddressInput.setAttribute(
 			"placeholder",
-			`Address ( Optional )`
+			"Address ( Optional )"
 		);
 		optionalAddressInput.setAttribute("required", "");
 
@@ -54,47 +53,14 @@ optinalAddressBtn.addEventListener("click", (e) => {
 
 		addressOptionalContaier.appendChild(inputContainer);
 	}
-	if (eleLength >= 5) {
-		optinalAddressBtn.parentNode.style.display = "none";
-	}
+	if (eleLength >= 5) optinalAddressBtn.parentNode.style.display = "none";
 });
+
+// ADD PROFILE PIC
 dummyFileInput.addEventListener("click", (e) => {
 	e.preventDefault();
 	fileInput.click();
 });
-
-Array.from(document.querySelectorAll("select")).map((select) =>
-	select.parentNode.querySelector("label").classList.add("empty")
-);
-
-document.addEventListener("change", () => {
-	inputs.map((input) => {
-		if (input.value !== "") {
-			input.parentNode.querySelector("label").classList.add("empty");
-		} else {
-			input.parentNode.querySelector("label").classList.remove("empty");
-		}
-	});
-});
-
-checkBox.querySelector(".news-sub").addEventListener("click", () => {
-	if (checkBox.querySelector(".news-sub").checked) {
-		checkBox.querySelector(".unchecked").style.display = "none";
-		checkBox.querySelector(".checked").style.display = "flex";
-	} else {
-		checkBox.querySelector(".unchecked").style.display = "block";
-		checkBox.querySelector(".checked").style.display = "none";
-	}
-});
-
-formSignUp.addEventListener("submit", (e) => {
-	e.preventDefault();
-	Array.from(formSignUp.querySelectorAll("input")).map((input) => {
-		console.log(input.name);
-		console.log(input.value);
-	});
-});
-
 fileInput.addEventListener("change", (e) => {
 	const file = fileInput.files[0];
 	const reader = new FileReader();
@@ -109,58 +75,78 @@ fileInput.addEventListener("change", (e) => {
 	reader.readAsDataURL(file);
 });
 
+// INPUT STYLES
+Array.from(document.querySelectorAll("select")).map((select) =>
+	select.parentNode.querySelector("label").classList.add("empty")
+);
+
+formSignUp.addEventListener("change", () => {
+	inputs.forEach((input) => {
+		if (input.value !== "") {
+			input.parentNode.querySelector("label").classList.add("empty");
+		} else {
+			input.parentNode.querySelector("label").classList.remove("empty");
+		}
+	});
+});
+
+// CHECKBOX STYLE
+checkBox.querySelector(".news-sub").addEventListener("click", () => {
+	if (checkBox.querySelector(".news-sub").checked) {
+		checkBox.querySelector(".unchecked").style.display = "none";
+		checkBox.querySelector(".checked").style.display = "flex";
+	} else {
+		checkBox.querySelector(".unchecked").style.display = "block";
+		checkBox.querySelector(".checked").style.display = "none";
+	}
+});
+
 document.querySelector(".sign-up").addEventListener("click", (e) => {
 	e.preventDefault();
-	const formData = [];
-
-	Array.from(formSignUp.querySelectorAll("input[type='text']")).map(
-		(input) => {
-			if (input.required && input.value === "") {
+	let inputshasValue = true;
+	const displayErrorMessage = () => {
+		inputs.forEach((input) => {
+			if (input.required && input.value.trim() == "") {
 				input.classList.add("input-error");
 				setTimeout(() => {
 					input.classList.remove("input-error");
 				}, 2000);
 			}
+		});
+	};
 
-			[input.name] = input.value;
-
-			formData[
-				formSignUp.querySelector("input[type='password']").name
-			] = formSignUp.querySelector("input[type='password']").value;
-
-			if (fileInput.value) {
-				const profileImage = fileInput.files[0];
-				const profileImageSize = profileImage.size;
-				const profileImageName = profileImage.name;
-				const profileImageExtenstion = profileImageName
-					.split(".")
-					.pop()
-					.toLowerCase();
-				const imagesFormat = ["jpg", "jpeg", "png"];
-				const reader = new FileReader();
-				reader.onloadend = () => {
-					const imgContainer = document.querySelector(
-						".profile-pic-box"
-					);
-					const imgEle = document.createElement("img");
-					imgContainer.innerHTML = "";
-					imgEle.src = reader.result;
-					imgContainer.appendChild(imgEle);
-				};
-				reader.readAsDataURL(file);
-			}
-
-			if (fileInput.value) {
-				formData[profileImage] = profileImage;
-				formData[profileImageSize] = profileImageSize;
-				formData[profileImageName] = profileImageName;
-				formData[profileImageExtenstion] = profileImageExtenstion;
-			}
-
-			// document.querySelector(
-			// 	".profile-pic-box"
-			// ).style.backgroundImage = `url("/assets/images/${profileImageName}")`;
+	// check values
+	inputs.forEach((input) => {
+		input.addEventListener("submit", (e) => e.preventDefault());
+		const inputValue = input.value.trim();
+		if (input.required && inputValue == "") {
+			return (inputshasValue = false);
 		}
-	);
-	console.log(formData);
+	});
+
+	// profile picture
+	const profilePic = () => {
+		if (fileInput.value) {
+			const image = fileInput.files[0];
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				const imgContainer = document.querySelector(".profile-pic-box");
+				const imgEle = document.createElement("img");
+				imgContainer.innerHTML = "";
+				imgEle.src = reader.result;
+				imgContainer.appendChild(imgEle);
+			};
+			reader.readAsDataURL(image);
+			return image;
+		}
+	};
+
+	if (inputshasValue) {
+		formDataSerialized = $(".form-signup").serialize();
+		console.log(profilePic());
+		console.log(formDataSerialized);
+		formSignUp.submit();
+	} else {
+		displayErrorMessage();
+	}
 });

@@ -16,15 +16,67 @@ body {
 button {
 	cursor: pointer;
 }
-.container-register {
-	padding: 30px;
+/* reusable */
+.heading-big {
+	text-transform: uppercase;
+	font-size: 40px;
+	color: #358247;
+	font-weight: normal;
+	margin: 25px 0;
 }
+/*  */
+
 .container-register {
 	display: grid;
+	position: relative;
 	grid-template-columns: 1fr 1fr;
 	padding: 30px;
 	grid-column-gap: 30px;
 	min-height: 100vh;
+}
+
+.signup-container {
+	animation: fadeInLeft 0.8s ease-in-out;
+	border: 1px solid #eeeeee;
+	display: flex;
+	position: relative;
+	border-radius: 3px;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.back-to-home {
+	text-decoration: none;
+	color: #358247;
+	position: absolute;
+	left: 20px;
+	font-size: 16px;
+	margin-top: 1px;
+	transition: color 0.2s ease;
+}
+
+.back-to-home:hover {
+	color: #4db265;
+}
+
+.back-to-home i {
+	padding-right: 6px;
+}
+
+.link-logo {
+	text-decoration: none;
+}
+
+.logo-name {
+	color: #4db265;
+}
+
+.signup-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70%;
 }
 
 .img-container {
@@ -33,24 +85,7 @@ button {
 	background-position: center;
 	background-size: cover;
 }
-.signup-container {
-	animation: fadeInLeft 0.8s ease-in-out;
-	border: 1px solid #eeeeee;
-	display: flex;
-	border-radius: 3px;
-	flex-direction: column;
-	align-items: center;
-	padding: 20px 0;
-}
-.logo-name {
-	color: #4db265;
-}
-.signup-content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 70%;
-}
+
 .login-content {
 	display: flex;
 	flex-direction: column;
@@ -59,14 +94,6 @@ button {
 	height: 60%;
 	margin-top: 12%;
 	justify-content: space-around;
-}
-
-.heading-big {
-	text-transform: uppercase;
-	font-size: 40px;
-	color: #358247;
-	font-weight: normal;
-	margin: 25px 0;
 }
 
 .profile-pic_container {
@@ -113,7 +140,7 @@ button {
 }
 
 .input {
-	padding: 0.9rem 1.7rem;
+	padding: 1rem 1.7rem;
 	border-radius: 3px;
 	border: 1px solid #c9c9c9;
 	width: 100%;
